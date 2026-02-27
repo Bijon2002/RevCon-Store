@@ -1,12 +1,26 @@
 require("dotenv").config();
 const app = require("./app");
 const connectDB = require("./config/db");
+const seedRBAC = require("./utils/seedRBAC");
+
+
+require("./models/Permission");
+require("./models/Role");
+require("./models/User");
+require("./models/Cart");
+require("./models/Product");
+require("./models/Order");
+
+
+
+console.log("models loaded ✅ ");
 
 const PORT = process.env.PORT || 5000;
 
 async function start() {
   try {
     await connectDB();
+    await seedRBAC();
 
     app.listen(PORT, () => {
       console.log(`🚀 Server running on http://localhost:${PORT}`);

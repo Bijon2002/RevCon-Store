@@ -8,8 +8,9 @@ const productSchema = new mongoose.Schema(
     price: { type: Number, required: true, min: 0 },
     stock: { type: Number, required: true, min: 0, default: 0 },
 
-    images: [{ type: String }], // URLs
+    images: [{ type: String }], // URLs and files
     
+
     isActive: { type: Boolean, default: true },
 
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
